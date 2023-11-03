@@ -9,6 +9,32 @@ struct CountsBySoH {
 
 struct CountsBySoH countBatteriesByHealth(const int* presentCapacities, int nBatteries) {
   struct CountsBySoH counts = {0, 0, 0};
+  // Rated capacity of new all battery
+  int ratedCapacity=120;//Ah
+  for(int i=0;i<nBatteries;i++)
+  {
+    // Calculating state of health of battery
+    float sohPercentage=((float)presentCapacities[i]/ratedCapacity)*100;
+    // Classifying batteries based on SoH
+    if(sohPercentage >80 && sohPercentage<=100)
+    {
+      counts.healthy++;
+       
+      }
+    else if(sohPercentage >=62 && sohPercentage<=80)
+    {
+      counts.exchange++;
+      
+    }
+    else
+    {
+      counts.failed++;
+       
+    }
+  }
+   printf(" Healthy count :%d\n",counts.healthy);
+   printf(" Exchange count :%d\n",counts.exchange); 
+   printf(" Failed count :%d\n",counts.failed); 
   return counts;
 }
 
