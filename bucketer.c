@@ -19,16 +19,22 @@ struct CountsBySoH countBatteriesByHealth(const int* presentCapacities, int nBat
     if(sohPercentage >80 && sohPercentage<=100)
     {
       counts.healthy++;
-    }
-    else if(sohPercentage >=62 && sohPercentege<=80)
+       
+      }
+    else if(sohPercentage >=62 && sohPercentage<=80)
     {
       counts.exchange++;
+      
     }
     else
     {
       counts.failed++;
+       
     }
   }
+   printf(" Healthy count :%d\n",counts.healthy);
+   printf(" Exchange count :%d\n",counts.exchange); 
+   printf(" Failed count :%d\n",counts.failed); 
   return counts;
 }
 
